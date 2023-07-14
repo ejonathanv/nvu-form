@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: #F2F7FF;
+    font-family: 'Montserrat', sans-serif !important
+}
+
+.bg-img{
+    @apply bg-cover bg-center bg-no-repeat relative;
+}
+
+.bg-img:before{
+    @apply absolute inset-0 bg-primary opacity-25;
+    content: '';
+}
+
+.bg-img:after{
+    content: '';
+    border-top: 15px solid;
+    border-right: 15px solid;
+    opacity: .75;
+    @apply w-10/12 left-0 bottom-0 h-1/2 border-secondary-100 absolute;
+}
+
+@media screen and (max-width: 768px) {
+    .bg-img:after{
+        @apply w-11/12
+    }
+}
+
+.bg-img *{
+    @apply relative z-10;
+}
+
+.form-group{
+    @apply mb-4;
+}
+
+.form-group label{
+    @apply block text-gray-900 text-xs font-bold mb-2;
+}
+
+.form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"], .form-group select, .form-group textarea, .form-group input[type="date"], .form-group input[type="time"], .form-group input[type="number"]{
+    @apply text-xs md:text-base appearance-none border border-gray-300 rounded-sm w-full py-2 px-3 text-primary leading-tight focus:outline-none;
+}
+
+.btn{
+    @apply font-bold py-3 px-4 rounded-sm w-full text-center text-xs md:text-base;
+}
+.btn.btn-primary{
+    @apply bg-primary text-secondary-100;
+}
+.btn.btn-primary-outline{
+    @apply border border-primary text-primary;
+}
+.btn.btn-danger{
+    @apply bg-red-500 text-white;
+}
+.btn.btn-danger-outline{
+    @apply border border-red-500 text-red-500;
+}
+.btn-sm{
+    @apply font-bold py-2 px-3 rounded-sm text-xs;
+}
+
+.table{
+    @apply w-full text-left overflow-hidden;
+}
+
+.table thead tr th{
+    @apply bg-gray-100 text-primary font-bold text-xs md:text-sm py-2 px-4;
+}
+
+.table tbody tr td{
+    @apply text-xs md:text-sm py-2 px-4 border-b border-gray-300;
+}
