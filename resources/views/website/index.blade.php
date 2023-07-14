@@ -13,6 +13,7 @@
             </h2>
         </div>
         <div class="basis-full md:basis-1/2 overflow-y-auto flex">
+            @if(\App\Models\User::count())
             <div class="my-auto w-full p-10">
                 @if(session('success'))
                     <h1 class="text-xl md:text-3xl font-bold mb-7 !leading-tight text-primary text-center md:text-left">
@@ -115,6 +116,16 @@
                     &copy; {{ date('Y') }} Todos los derechos reservados.
                 </p>
             </div>
+            @else
+            <div class="my-auto w-full p-10">
+                <h1 class="text-xl md:text-3xl font-bold mb-7 !leading-tight text-primary text-center md:text-center">
+                    Pronto estaremos abriendo nuevas fechas para la presentación.
+                </h1>
+                <h3 class="text-lg font-bold text-left mb-7 text-primary text-center">
+                    ¡Vuelve pronto!
+                </h3>
+            </div>
+            @endif
         </div>
     </div>
 

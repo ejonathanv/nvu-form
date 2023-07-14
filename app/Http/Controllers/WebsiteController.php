@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Referral;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
     public function index($referido = null){
+
+        $usersCount = User::count();
+        if($usersCount == 0){
+            return view('website.index');
+        }
 
         // Buscamos si el referido existe en la base de datos
         if($referido){
