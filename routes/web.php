@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ZoomDateController;
 use App\Http\Controllers\DashboardController;
@@ -20,6 +21,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'verified']], fu
     Route::put('zoom-dates/{zoom_date}/end', [ZoomDateController::class, 'end'])->name('end-presentation');
     Route::post('zoom-dates/{zoom_date}/export', [ZoomDateController::class, 'export'])->name('download-registers');
     Route::resource('referrals', ReferralController::class);
+    Route::resource('registers', RegisterController::class);
+    Route::post('download-all-registers', [RegisterController::class, 'downloadAllRegisters'])->name('download-all-registers');
 });
 
 Route::middleware('auth')->group(function () {

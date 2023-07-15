@@ -16,13 +16,15 @@
                         {{ __('Presentaciones en Zoom') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('registers')">
+                    <x-nav-link :href="route('registers.index')" :active="request()->routeIs('registers*')">
                         {{ __('Personas registradas') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('registers')">
+                    @if(auth()->user()->referral->default)
+                    <x-nav-link :href="route('referrals.index')" :active="request()->routeIs('referrals*')">
                         {{ __('Referidos') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 

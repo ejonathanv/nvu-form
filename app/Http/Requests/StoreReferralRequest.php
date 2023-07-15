@@ -11,7 +11,7 @@ class StoreReferralRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreReferralRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:255', 'min:3'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'nullable', 'min:8'],
+            'code' => ['required', 'string', 'max:255', 'min:3', 'unique:referrals,code'],
         ];
     }
 }

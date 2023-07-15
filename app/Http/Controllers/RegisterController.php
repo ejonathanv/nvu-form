@@ -6,18 +6,21 @@ use App\Mail\SayThanks;
 use App\Models\Referral;
 use App\Models\Register;
 use App\Mail\NewRegister;
+use App\Exports\AllRegistersExport;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreRegisterRequest;
 use App\Http\Requests\UpdateRegisterRequest;
 
 class RegisterController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.registers.index');
     }
 
     /**
@@ -153,5 +156,11 @@ class RegisterController extends Controller
     public function destroy(Register $register)
     {
         //
+    }
+
+    public function downloadAllRegisters(){
+        $referral = auth()->user()->referral;
+        $filename = 'registros-de-' . $referral->code . '.xlsx';
+        return Excel::download(new AllRegistersExport, $filename);
     }
 }

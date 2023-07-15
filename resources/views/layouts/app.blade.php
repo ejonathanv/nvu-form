@@ -32,8 +32,8 @@
                 {{ $slot }}
             </main>
 
-            <footer class="mt-7 py-4 px-4 sm:px-6 lg:px-8">
-                <p class="text-center text-gray-500 mt-4 font-bold text-sm">
+            <footer class="py-16 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-gray-500 font-bold text-sm">
                     &copy; {{ date('Y') }} Oportunidades de Éxito
                 </p>
             </footer>

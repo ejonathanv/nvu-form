@@ -5,26 +5,24 @@ namespace App\Exports;
 use App\Models\Register;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 
-class RegistersExport implements FromCollection, WithHeadings
+class AllRegistersExport implements FromCollection, WithHeadings, WithColumnWidths
 {
-
-    public $zoomDateId;
-
-    public function __construct($zoomDateId)
-    {
-        $this->zoomDateId = $zoomDateId;
-    }
-
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Register::where('zoom_date_id', $this->zoomDateId)
+
+        $user = auth()->user();
+        $referral = $user->referral;
+        $registers = Register::where('referral_id', $referral->id)
             ->orderBy('created_at', 'desc')
             ->select('name', 'email', 'phone')
             ->get();
+
+        return $registers;
     }
 
     public function columnWidths(): array
@@ -44,5 +42,4 @@ class RegistersExport implements FromCollection, WithHeadings
             'Teléfono',
         ];
     }
-
 }
