@@ -28,15 +28,15 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="min-h-screen bg-cover bg-no-repeat bg-center bg-fixed" style="background-image: url({{ asset('img/pexels-mike-tyurin-5534734.jpg') }})">
                 {{ $slot }}
+                <footer class="py-16 px-4 sm:px-6 lg:px-8">
+                    <p class="text-center text-white font-bold text-xs">
+                        &copy; {{ date('Y') }} Oportunidades de Éxito
+                    </p>
+                </footer>
             </main>
 
-            <footer class="py-16 px-4 sm:px-6 lg:px-8">
-                <p class="text-center text-gray-500 font-bold text-sm">
-                    &copy; {{ date('Y') }} Oportunidades de Éxito
-                </p>
-            </footer>
         </div>
     </body>
 </html>

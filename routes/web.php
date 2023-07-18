@@ -12,6 +12,8 @@ Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::redirect('/ref', '/', 301);
 Route::get('/ref/{referido}', [WebsiteController::class, 'index'])->name('referral');
 Route::post('registro', [RegisterController::class, 'store'])->name('register.store');
+Route::get('configurar', [WebsiteController::class, 'config'])->name('config')->middleware('configured');
+Route::post('configurar', [WebsiteController::class, 'storeConfig'])->name('config.store')->middleware('configured');
 
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'verified']], function(){
